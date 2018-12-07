@@ -50,7 +50,6 @@ class IndexPage extends StatelessWidget {
         crossAxisCount: 3,
         children: <Widget>[
           menuIcons(context, Icon(FontAwesomeIcons.stopwatch, size: 48.0, color: Color(0xFFFF856C)), 'Day1' ,Day1()),
-
         ],
       ),
       backgroundColor: Colors.white,

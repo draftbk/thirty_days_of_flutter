@@ -14,6 +14,7 @@ class Day1 extends StatefulWidget {
   createState() => Day1State();
 }
 class Day1State extends State<Day1> {
+  List<String> items= new List<String>();
   bool _isStart=false;
   Timer _timer;
   int _num=0;
@@ -26,8 +27,10 @@ class Day1State extends State<Day1> {
   String _smallTime="00:00:00";
   @override
   Widget build(BuildContext context) {
-    Widget titleSection = Container(
+
+    Widget timeSection = Container(
       padding: const EdgeInsets.all(15.0),
+      color: Colors.white,
       child: Row(
         children: [
           Expanded(
@@ -124,6 +127,7 @@ class Day1State extends State<Day1> {
       setState(() {
         if (this._isStart) {
           _startForsmall=_num;
+          items.add(_smallTime);
         } else {
           if(_leftString=="Reset"){
             _leftString="Lap";
@@ -132,6 +136,7 @@ class Day1State extends State<Day1> {
             _smallTime="00:00:00";
             _num=0;
             _startForsmall=0;
+            items.clear();
           }
         }
       });
@@ -168,7 +173,7 @@ class Day1State extends State<Day1> {
 
     Widget buttonSection = Container(
       color: Colors.grey[200],
-      padding: const EdgeInsets.only(top: 30.0),
+      padding: const EdgeInsets.only(top: 30.0,bottom: 30.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -177,27 +182,48 @@ class Day1State extends State<Day1> {
         ],
       ),
     );
+    Widget listSection = ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        int lapNumber=index+1;
+        return Container(
+          height: 40.0,
+          padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 8.0),
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text('Lap $lapNumber',style: TextStyle(fontSize: 20)),
+                  Text('               ',style: TextStyle(fontSize: 20)),
+                  Text('${items[index]}',textAlign: TextAlign.right,style: TextStyle(fontSize: 20)),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 15.0),
+                height: 1,
+                color: Colors.grey[300],
+              )
+            ],
+          ),
 
-    Widget textSection = Container(
-      color: Colors.grey[200],
-      padding: const EdgeInsets.all(32.0),
-      child: Text(
-        '''
-Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine Lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degrees Celsius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run.
-        ''',
-        softWrap: true,
-      ),
+        );
+      },
     );
 
+
     return Scaffold(
+        backgroundColor: Colors.grey[200],
         appBar: CupertinoNavigationBar(
           middle: Text('A StopWatch'),
         ),
-        body: ListView(
+        body: Column(
           children: [
-            titleSection,
+            timeSection,
             buttonSection,
-            textSection,
+            Expanded(
+              child: listSection,
+            )
           ],
         ),
     );

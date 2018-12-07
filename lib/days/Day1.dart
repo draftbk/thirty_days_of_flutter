@@ -38,11 +38,11 @@ class Day1State extends State<Day1> {
               children: [
                 Container(
                   alignment: Alignment.centerRight,
-                  padding: const EdgeInsets.only(right: 50.0),
+                  padding: const EdgeInsets.only(right: 30.0),
                   child: Text(
                     _smallTime,
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 22,
                       color: Colors.grey[400],
                       fontWeight: FontWeight.w100,
                     ),
@@ -54,7 +54,7 @@ class Day1State extends State<Day1> {
                   child: Text(
                     _totalTime,
                     style: TextStyle(
-                      fontSize: 80,
+                      fontSize: 75,
                       fontWeight: FontWeight.w100,
                     ),
                   ),
@@ -187,20 +187,21 @@ class Day1State extends State<Day1> {
       itemBuilder: (context, index) {
         int lapNumber=index+1;
         return Container(
-          height: 40.0,
+          height: 50.0,
           padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 8.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text('Lap $lapNumber',style: TextStyle(fontSize: 20)),
-                  Text('               ',style: TextStyle(fontSize: 20)),
-                  Text('${items[index]}',textAlign: TextAlign.right,style: TextStyle(fontSize: 20)),
+                  Text('Lap $lapNumber',style: TextStyle(fontSize: 18)),
+                  Text('                     ',style: TextStyle(fontSize: 18)),
+                  Text('${items[index]}',textAlign: TextAlign.right,style: TextStyle(fontSize: 18)),
                 ],
               ),
               Container(
-                padding: EdgeInsets.only(top: 15.0),
+                alignment: Alignment.bottomCenter,
                 height: 1,
                 color: Colors.grey[300],
               )

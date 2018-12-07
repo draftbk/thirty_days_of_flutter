@@ -1,7 +1,6 @@
 # 30 Days of React Native
 
 This project is inspired by
-
 [https://github.com/fangwei716/30-days-of-react-native](https://github.com/fangwei716/30-days-of-react-native)
 
 And also learn a lot from

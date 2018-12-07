@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:thirty_days_of_flutter/Days/Day1.dart';
+import 'package:thirty_days_of_flutter/days/Day1.dart';
+import 'package:thirty_days_of_flutter/days/Day2.dart';
 
 void main() => runApp(new IndexPage());
 
@@ -28,7 +29,7 @@ class IndexPage extends StatelessWidget {
                     Container(
                         margin: EdgeInsets.only(top: 10.0),
                         child:  Text(
-                            title
+                            title,style: TextStyle(fontSize: 16)
                         )
                     )
                   ],
@@ -43,13 +44,14 @@ class IndexPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CupertinoNavigationBar(
-        middle: const Text('Flutter Demos Gallery'),
+        middle: const Text('30 Days of Flutter'),
       ),
       body: GridView.count(
         primary: false,
         crossAxisCount: 3,
         children: <Widget>[
-          menuIcons(context, Icon(FontAwesomeIcons.stopwatch, size: 48.0, color: Color(0xFFFF856C)), 'Day1' ,Day1()),
+          menuIcons(context, Icon(FontAwesomeIcons.stopwatch, size: 50.0, color: Color(0xFFFF856C)), 'Day1' ,Day1()),
+//          menuIcons(context, Icon(FontAwesomeIcons.cloudSunRain, size: 50.0, color: Color(0xFF90BDC1)), 'Day2' ,Day2()),
         ],
       ),
       backgroundColor: Colors.white,
